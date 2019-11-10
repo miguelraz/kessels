@@ -1,0 +1,6 @@
+extern crate kessels
+
+    #[test]
+fn trabajo_test(){
+    assert_eq!(500500,kessels::trabajo(1));
+}
