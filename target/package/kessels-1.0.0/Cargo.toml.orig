@@ -7,6 +7,3 @@ description = "A WIP crate to provide a concurrent sublogarithmic critical secti
 keywords = ["concurrency", "kessels", "critical", "sublogarithmic"]
 categories = ["algorithms", "concurrency"]
 license = "MIT"
-
-[dependencies]
-clippy = "0.0.302"

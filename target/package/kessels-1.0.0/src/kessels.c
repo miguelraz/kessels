@@ -17,7 +17,7 @@ int trabajo(int idThread){
 }
 
 // Copia descarada de la practica0 para empezar el programa
-int main(int argc, char** argv){
+long int main(int argc, char** argv){
 
 	int MAX_HILOS=1024; //limite superior (arbitrario) del numero de hilos
 	int nThreads, idThread;

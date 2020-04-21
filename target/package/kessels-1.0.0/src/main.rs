@@ -1,7 +1,6 @@
 use std::convert::TryInto;
 use std::io;
 use std::thread;
-use std::sync::Arc;
 
 pub mod kessels {
     pub fn work1<T: From<i8> + std::ops::AddAssign<T>>(_i: T) -> T {
@@ -31,12 +30,8 @@ fn main() {
     let v: usize = n - 1;
     let once: usize = v;
     let mut edge = vec![0 as usize; once]; // Should be a 1 x v size vec
-    let arc_edge = Arc::new(edge);
     let mut competing = vec![vec![0 as i64; once]; 2]; // should be a 2 x v size array
-    let arc_competing = Arc::new(competing);
     let mut turn = vec![vec![0 as i64; once]; 2]; // should be a 2 x v size array :
-    let arc_turn = Arc::new(turn);
-    let mut joinhandles = Vec::new();
 
     let mut idThread = 0;
     let mut node: usize = 0;
@@ -62,19 +57,20 @@ fn main() {
                 // Get node number from id
                 node = node / 2;
 
-                // Announce you are competing
-                competing[node][id] = 1;
+                // Anounce you are competing
+                unsafe {competing[node][id] = 1;}
 
                 // Local variable of if another thread is in same node
                 let temp: i64 = turn[node][1 - id] as i64;
                 let local: i64 = temp % 2;
 
-                turn[node][id] = local;
+                unsafe {turn[node][id] = local;}
                 // Cond1 : You are the only thread, and no others are competing in same node
                 // Cond2 : The other thread is competing, but is outside the critical section
                 // while not true, wait until you can enter the critical section
                 while !((competing[node][1 - id] == 0) || (local as usize != (turn[node][1 - id] as usize + id as usize) % 2))
-                {}
+                {
+                }
 
                 edge[node] = id;
             }

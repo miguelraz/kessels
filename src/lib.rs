@@ -1,3 +1,5 @@
+fn main() {}
+
 pub mod kessels {
     pub fn work1<T: From<i8> + std::ops::AddAssign<T>>(_i: T) -> T {
         let mut _sum = T::from(0);
