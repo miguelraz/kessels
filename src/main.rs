@@ -36,7 +36,7 @@ fn main() {
     let arc_competing = Arc::new(competing);
     let mut turn = vec![vec![0 as i64; once]; 2]; // should be a 2 x v size array :
     let arc_turn = Arc::new(turn);
-    let mut joinhandles = Vec::new();
+    let mut joinhandles: Vec<i32> = Vec::new();
 
     let mut idThread = 0;
     let mut node: usize = 0;
