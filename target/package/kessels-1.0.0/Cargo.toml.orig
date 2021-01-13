@@ -1,9 +1,0 @@
-[package]
-name = "kessels"
-version = "1.0.0"
-authors = ["miguelraz <miguelraz@ciencias.unam.mx>"]
-edition = "2018"
-description = "A WIP crate to provide a concurrent sublogarithmic critical section entry algorithm."
-keywords = ["concurrency", "kessels", "critical", "sublogarithmic"]
-categories = ["algorithms", "concurrency"]
-license = "MIT"
